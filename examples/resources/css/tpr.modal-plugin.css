@@ -30,9 +30,6 @@
 	/* GENERAL STYLES */
 	[class^=tpr-modalbox-] {
 		position: relative;
-		border: 1px solid lightgrey;
-		border-radius: 2px;
-		background: white;
 		width: 30%;
 	}
 
@@ -138,7 +135,9 @@
 	/* COLOR STYLES*/
 	/* Grey (Default)*/
 	.tpr-modalbox-grey {
-		
+		border: 1px solid lightgrey;
+		background: white;
+		border-radius: 2px;
 	}
 
 	.tpr-modalbox-grey .tpr-modal-topbar {
