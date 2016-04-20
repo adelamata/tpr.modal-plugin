@@ -93,3 +93,33 @@
 		title      : "Warning",
 		message    : "Warning!"
 	});
+
+# API
+	# setTitle(title) 
+	Set modal title
+
+	# setMessage(message)
+	Set modal message
+
+	# setMessageExplain(explain)
+
+
+	# setMoreinfoState(state)
+
+
+	# setMoreinfoButtonText(text)
+
+
+	# setStyle(styleClass)
+
+
+	# setClosable(closable)
+
+
+	# show()
+
+
+	# hide()
+
+
+	# setButtons(buttons)
