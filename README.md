@@ -26,9 +26,8 @@
 	meet the vast majority of plugins of any kind and we think that is a good starting 
 	point for designing our plugin.
 
-	En todo caso sólamente se utilizan una serie de propiedades CSS que son necesarias 
-	para poder añadir comportamientos muy necesarios del modal, pero no trabaja con ningun 
-	estilo "estructural" ni "visual".
+	In any case only a number of CSS properties that are required to add much needed 
+	modal behavior are used, but does not work with any "structural" or "visual" style.
 
 
 	# CSS
