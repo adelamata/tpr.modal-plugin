@@ -15,9 +15,20 @@
 	For use tpr.modal-plugin only is necessary importing jquery library in our project.
 
 
-# THE PLUGIN
+# The Plugin
 	# Javascript
+	The plugin is designed to work only with logic and not quite touch anything of
+	styles, the plugin code does not modify or create any CSS property to any of the 
+	HTML blocks the modal uses. This implies that is delegated to CSS full responsibility 
+	for the display of modal.
 
+	That is, we are totally separating the modal logic of their way to be. This does not 
+	meet the vast majority of plugins of any kind and we think that is a good starting 
+	point for designing our plugin.
+
+	En todo caso sólamente se utilizan una serie de propiedades CSS que son necesarias 
+	para poder añadir comportamientos muy necesarios del modal, pero no trabaja con ningun 
+	estilo "estructural" ni "visual".
 
 
 	# CSS
