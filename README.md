@@ -94,6 +94,37 @@
 		message    : "Warning!"
 	});
 
+# Properties
+	# closable
+	# styleclass
+	# backlayer
+		# state
+	# closeoutclick
+	# moreinfo
+		# state
+		# message
+		# buttontext
+	# buttons
+		# accept
+			# state
+			# text
+			# class
+			# click
+		# cancel
+			# state
+			# text
+			# class
+			# click
+		# close
+			# state
+			# text
+			# class
+			# click
+	# title
+	# message
+	# messageExplain
+
+
 # API
 	# setTitle(title) 
 	Set modal title
@@ -102,24 +133,26 @@
 	Set modal message
 
 	# setMessageExplain(explain)
-
+	Set modal explain message
 
 	# setMoreinfoState(state)
-
+	Show or hide 'More info' button
 
 	# setMoreinfoButtonText(text)
-
+	Set 'More info' button text
 
 	# setStyle(styleClass)
-
+	Set modal style
 
 	# setClosable(closable)
-
+	Sets whether the modal is curable. button cross at the top right of the modal 
+	and the event closing the modal click when it is removed out of hiding.
 
 	# show()
-
+	Show modal
 
 	# hide()
-
+	Hide modal
 
 	# setButtons(buttons)
+	Set buttons
