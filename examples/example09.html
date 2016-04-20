@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example09 - Only one button and no closable</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/tpr.modal-plugin.min.css">
+
+</head>
+<body>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="resources/js/tpr.modal-plugin.min.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+
+		/**
+		* Author: Antonio de la Mata López
+		* Example: 09
+		* Description: Example09 - Only one button and no closable
+		*
+		* 
+		**/
+		var modal = new TPRMODAL();
+			modal.setButtons ({
+				accept : {
+						state   : true,         // Attach to DOM
+						text    : 'Aceptar',    // Text: in spanish 'Aceptar', english, any language
+						class   : 'default',    // CSS class aplied, default: .default      
+						click   : function () { // Button behaviour
+							this.hide (); 		// Hide modal
+						}
+					},
+				"cancel" : {state : false},
+				"close"  : {state : false}
+			
+		});
+		
+			modal.setClosable (false);
+			modal.show ();
+
+	</script>
+</body>
+</html>
+

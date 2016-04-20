@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example05 - Activating more info message post-construction</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/tpr.modal-plugin.min.css">
+
+</head>
+<body>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="resources/js/tpr.modal-plugin.min.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+
+		/**
+		* Author: Antonio de la Mata López
+		* Example: 05
+		* Description: Activating more info message post-construction
+		* We can configure more info post-construction
+		* Methods: setMessageExplain("This is an explained message. It's toooooooooooooooooooooooooooo * looooooooooooooonggggggggggggggggg")
+		* setMoreinfoButtonText("More......")
+		**/
+		var modal = new TPRMODAL();
+			modal.setMessageExplain ("This is an explained message. It's toooooooooooooooooooooooooooo * looooooooooooooonggggggggggggggggg");
+			modal.setMoreinfoButtonText ("More......");
+			modal.setMoreinfoState (true);
+			modal.show ();
+
+	</script>
+</body>
+</html>

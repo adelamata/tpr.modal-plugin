@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example03 - Changing title and message with methods</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/tpr.modal-plugin.min.css">
+
+</head>
+<body>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="resources/js/tpr.modal-plugin.min.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+
+		/**
+		* Author: Antonio de la Mata López
+		* Example: 03
+		* Description: Change text and default message with methods
+		* You can decide change de text or message post-instantiation. 
+		* Thus tpr.modal-plugin has methods that allow this task kind.
+		* Used methods: setTitle("My new method title"), setMessage("My looooooooooooooooong method message")
+		**/
+		var modal = new TPRMODAL();
+			modal.setTitle ("My new method title");
+			modal.setMessage ("My looooooooooooooooong method message");
+			modal.show ();
+
+	</script>
+</body>
+</html>

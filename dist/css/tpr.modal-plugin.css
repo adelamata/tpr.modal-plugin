@@ -1,0 +1,154 @@
+	
+/**
+* 
+* Copyright (c) 2016 Antonio Ángel de la Mata López
+* Permission is hereby granted, free of charge, to any person obtaining a copy 
+* of this software and associated documentation files (the "Software"), to deal 
+* in the Software without restriction, including without limitation the rights to 
+* use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+* the Software, and to permit persons to whom the Software is furnished to do so, 
+* subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all 
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+* INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
+* PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE 
+* FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+* OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+* DEALINGS IN THE SOFTWARE.
+*
+**/
+
+
+	body {
+		background: url('../images/footer_lodyas.png');
+	}
+
+/* Modal Styles */
+	/* GENERAL STYLES */
+	[class^=tpr-modalbox-] {
+		position: relative;
+		border: 1px solid lightgrey;
+		border-radius: 2px;
+		background: white;
+		width: 30%;
+	}
+
+	[class^=tpr-modalbox-] > div {
+
+	}
+
+	[class^=tpr-modalbox-] p {
+		margin: 0; 
+		padding: 0;
+		display: inline-block;
+	}
+
+	[class^=tpr-modalbox-] .tpr-modal-morebox  {
+		max-height: 100px;
+		overflow: auto;
+		padding: 5px 10px;
+		display: none;
+	}
+
+	[class^=tpr-modalbox-] .tpr-modal-morebutton {
+		margin-top: 10px;
+		display: none;
+		font-size: 11px;
+		width: 100%;
+	}
+
+	.tpr-modal-background {
+		position: fixed;
+		top : 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.4);
+		display: none;
+	}
+
+
+	.tpr-modal-topbar,
+	.tpr-modal-content,
+	.tpr-modal-botbar
+	.tpr-modal-morebox {
+		padding: 10px;
+		display: inline-block;
+		width: 100%;
+		word-break: break-all;
+	}
+
+	.tpr-modal-botbar {
+		position: relative;
+		bottom: 0;
+		left: 0;
+		padding: 15px 5px;
+	}
+
+	.tpr-modal-topbar .tpr-modal-close {
+		float: right;
+		background: url('../images/close_btn.png') no-repeat;
+		background-size: 70%;
+		background-position: center;
+		width: 20px;
+		height: 20px;
+	}
+
+	/* Botbar buttons*/
+	.tpr-modal-botbar .tpr-modal-button {
+		padding: 10px 15px;
+		margin: 2px;
+	}
+	/* Botbar buttons*/
+
+	/* Buttons styles*/
+		/* Default button style */
+		.tpr-modal-botbar .tpr-modal-button.default {
+			color: grey;
+			background: lightgrey;
+			text-decoration: none;
+		}
+		.tpr-modal-botbar .tpr-modal-button.default:hover {
+			text-decoration: none;
+			background: grey;
+			color: lightgrey;
+		}
+		/* Default button style */
+		/* Default close button style */
+		.tpr-modal-botbar .tpr-modal-button.default-close {
+			color: #CB8681;
+			background: #94251E;
+			text-decoration: none;
+		}
+		.tpr-modal-botbar .tpr-modal-button.default-close:hover {
+			text-decoration: none;
+			background: #CB8681;
+			color: #94251E;
+		}
+		/* Default close button style */
+	/* Buttons styles*/
+
+	/* GENERAL STYLES */
+
+
+
+	/* COLOR STYLES*/
+	/* Grey (Default)*/
+	.tpr-modalbox-grey {
+		
+	}
+
+	.tpr-modalbox-grey .tpr-modal-topbar {
+		background: lightgrey;
+	}
+
+	.tpr-modalbox-grey .tpr-modal-morebox {
+		background: grey;
+		color: lightgrey;
+	}
+	/* Grey (Default)*/
+
+/* Modal styles */

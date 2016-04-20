@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example10 - Modify styles</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/tpr.modal-plugin.min.css">
+	<style type="text/css">
+
+	/* Custon modal style (red)*/
+	.tpr-modalbox-red {border: 1px solid #CF3329;}
+	.tpr-modalbox-red .tpr-modal-topbar {background: #CF3329; color: #FFA7A2;}
+	</style>
+</head>
+<body>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="resources/js/tpr.modal-plugin.min.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+
+		/**
+		* Author: Antonio de la Mata López
+		* Example: 10
+		* Description: Example10 - You can modify all style of the modal. 
+		* All you have to know is that your first class must start with .tpr-modalbox-YOURCOLOR
+		* For example : .tpr-modalbox-red {}. See above of this page, in style tag
+		* {styleclass : "class"}
+		**/
+		var modal = new TPRMODAL({
+			styleclass : "tpr-modalbox-red",
+			title      : "Alert",
+			message    : "An error has ocurred!!!!!",
+			closable   : false,
+			buttons    : {
+				accept : {class: "default-close"},
+				cancel : {state: false},
+				close  : {state: false}
+			}
+		});
+			modal.show ();
+
+	</script>
+</body>
+</html>
+
