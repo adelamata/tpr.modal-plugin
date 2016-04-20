@@ -1,5 +1,5 @@
 # tpr.modal-plugin
-	A modal plugin for jQuery @ Antonio de la Mata López @ 2016
+	A modal plugin for your web @ Antonio de la Mata López @ 2016
 
 # Description
 	tpr.modal-plugin is a plugin that uses jQuery and born in 
