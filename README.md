@@ -94,7 +94,7 @@
 		message    : "Warning!"
 	});
 
-# Properties
+# Properties (in construction)
 	# closable
 	# styleclass
 	# backlayer
