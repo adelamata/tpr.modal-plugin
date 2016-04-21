@@ -86,7 +86,7 @@
 	/* My yellow theme (Default)*/
 
 	And then you only need to pass it to the constructor of modal when it is 
-	instantiated in the parameter "styleClass". Example:
+	instantiated in the parameter "styleclass". Example:
 
 	var modal = new TPRMODAL({
 		styleclass : "tpr-modalbox-yellow",
