@@ -50,21 +50,21 @@
     modal behavior are used, but does not work with any "structural" or "visual" style.</p>
 
 
-    <strong>CSS</strong>
-    The style modal display is determined by the CSS, as is obvious. However in the 
+<h2><strong>CSS</strong></h2>
+    <p>The style modal display is determined by the CSS, as is obvious. However in the 
     component we prefer to distinguish between structural and visual styles. Structural 
     styles are styles that modify the dimensional shape of the modal, ie sizes, paddings, 
     margins, etc. However visual styles change more visual properties such as color, font 
-    sizes, etc.
+    sizes, etc.</p> 
 
-    Why do we do this ?, because separating the styles in this way we can create a generic 
+    <p>Why do we do this ?, because separating the styles in this way we can create a generic 
     styles for the shape of modal so not to repeat any of (structural) code and on the other 
     hand you can create color templates that modify the modal simply by changing the CSS class 
-    and pass the (visual) plugin.
+    and pass the (visual) plugin.</p>
 
-    <strong>Structural styles</strong>
-    As we discussed the CSS properties that are some structural consider as position, margin, 
-    padding, etc. Here is an example:
+<h3><strong>Structural styles</strong></h3>
+    <p>As we discussed the CSS properties that are some structural consider as position, margin, 
+    padding, etc. Here is an example:</p>
     <pre><code>
     [class^=tpr-modalbox-] {
         position: relative;
@@ -72,11 +72,11 @@
     }
     </code></pre>
 
-    Actually these properties affect only the root class of all modal, ie the class 
-    tp-modalbox-"anything".
+    <p>Actually these properties affect only the root class of all modal, ie the class 
+    tp-modalbox-"anything".</p>
 
-    <strong>Visualization styles</strong>
-    A display style would therefore be as follows:
+<h3><strong>Visualization styles</strong></h3>
+    <p>A display style would therefore be as follows:</p>
     <pre><code>
     tpr-modalbox-grey {
         border: 1px solid lightgrey;
@@ -85,12 +85,12 @@
     }
     </code></pre>
 
-    <strong>Create a new theme for our modal</strong>
-    With this separation we can easily create new color schemes for our modal. How ?, easy, all
+    <h3><strong>Create a new theme for our modal</strong></h3>
+    <p>With this separation we can easily create new color schemes for our modal. How ?, easy, all
     you have to do is in our CSS file to create a class that is called something like tpr-modalbox-"ournewcolor". 
     Example tpr-modalbox-yellow.
 
-    And then go create visual styles that change colors, font size, etc.
+    And then go create visual styles that change colors, font size, etc.</p>
 
     <pre><code>
     /* My yellow theme (Default)*/
@@ -111,17 +111,19 @@
     /* My yellow theme (Default)*/
     </code></pre>
 
-And then you only need to pass it to the constructor of modal when it is 
-instantiated in the parameter "styleclass". Example:
+    <p>And then you only need to pass it to the constructor of modal when it is 
+    instantiated in the parameter "styleclass". Example:</p>
 
-var modal = new TPRMODAL({
-    styleclass : "tpr-modalbox-yellow",
-    title      : "Warning",
-    message    : "Warning!"
-});
-</code></pre>
+    <pre><code>
+    var modal = new TPRMODAL({
+        styleclass : "tpr-modalbox-yellow",
+        title      : "Warning",
+        message    : "Warning!"
+    });
+    </code></pre>
 
-<p><strong>Properties (in constru</strong>ction)
+<h2><strong>Properties (in construction)</h2>
+<pre><code>
     # closable
     # styleclass
     # backlayer
@@ -149,40 +151,41 @@ var modal = new TPRMODAL({
             # click
     # title
     # message
-    # messageExplain</p>
-
-<p><strong>API</strong>
-    # setTitle(title) 
-    Set modal title</p>
-
-<pre><code># setMessage(message)
-Set modal message
-
-# setMessageExplain(explain)
-Set modal explain message
-
-# setMoreinfoState(state)
-Show or hide 'More info' button
-
-# setMoreinfoButtonText(text)
-Set 'More info' button text
-
-# setStyle(styleClass)
-Set modal style
-
-# setClosable(closable)
-Sets whether the modal is curable. button cross at the top right of the modal 
-and the event closing the modal click when it is removed out of hiding.
-
-# show()
-Show modal
-
-# hide()
-Hide modal
-
-# setButtons(buttons)
-Set buttons
+    # messageExplain
 </code></pre>
+
+<h2><strong>API</strong></h2>
+<h3>setTitle(title)</h3> 
+<p>Set modal title</p>
+
+<h3>setMessage(message)</h3> 
+<p>Set modal message</p>
+
+<h3>setMessageExplain(explain)</h3> 
+<p>Set modal explain message</p>
+
+<h3>setMoreinfoState(state)</h3> 
+<p>Show or hide 'More info' button</p>
+
+<h3>setMoreinfoButtonText(text)</h3> 
+<p>Set 'More info' button text</p>
+
+<h3>setStyle(styleClass)</h3> 
+<p>Set modal style</p>
+
+<h3>setClosable(closable)</h3> 
+<p>Sets whether the modal is curable. button cross at the top right of the modal 
+and the event closing the modal click when it is removed out of hiding.</p>
+
+<h3>show()</h3> 
+<p>Show modal</p>
+
+<h3>hide()</h3> 
+<p>Hide modal</p>
+
+<h3>setButtons(buttons)</h3> 
+<p>Set buttons</p>
+
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/kraneok/tpr.modal-plugin">Tpr.modal-plugin</a> is maintained by <a href="https://github.com/kraneok">kraneok</a>.</span>
