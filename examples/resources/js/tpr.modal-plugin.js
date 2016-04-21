@@ -178,23 +178,6 @@
 				self.$modal.$modalbox.append (self.$modal.$modalbotbar);
 
 
-				//
-				// Calculate center position
-				var windowWidth  = window.innerWidth; 
-				var windowHeight = window.innerHeight;
-				var modalWidth   = Math.floor ((self.$modal.$modalbox.innerWidth() / 100) * windowWidth);
-				var modalHeight  = Math.floor ((self.$modal.$modalbox.innerHeight() / 100) * windowHeight) + 400;
-				
-				var xPosition    = (windowWidth / 2) - (modalWidth / 2);
-				var yPosition    = (windowHeight / 2) - (modalHeight / 2);
-
-				//
-				// Set modal position
-				self.$modal.$modalbox.css ({
-					"left" : xPosition + 'px',
-					"top"  : yPosition + 'px'
-				});
-
 				// Has background?
 				if (self.options.backlayer) {
 					self.$modal.$modalbackground.appendTo ($('body'));
@@ -217,14 +200,38 @@
 					self.setClosable (false);
 				}
 
+
+				//
+				// CENTER MODAL
+				var windowWidth  = window.innerWidth; 
+				var windowHeight = window.innerHeight;
+				var modalWidth   = Math.floor ((self.$modal.$modalbox.innerWidth() / 100) * windowWidth);
+				var modalHeight  = Math.floor ((self.$modal.$modalbox.innerHeight() / 100) * windowHeight) + 400;
+				
+				var xPosition    = (windowWidth / 2) - (modalWidth / 2);
+				var yPosition    = (windowHeight / 2) - (modalHeight / 2);
+
+				//
+				// SET x, y POSITIONS
+				self.$modal.$modalbox.css ({
+					"left" : xPosition + 'px',
+					"top"  : yPosition + 'px'
+				});
+
+				//
+				// This event stop propagation from inner modalbox tags
+				self._attachEvent (self.$modal.$modalbox, 'click', function () {
+					return false;
+				});
+
 			},
 
 			_attachEvent : function (element, event, callback) {
 				var self = this;
 				if (element && event && callback) {
 					element.off (event);
-					element.on (event, function (e) {
-						e.stopPropagation();
+					element.on (event, function (event) {
+						event.stopPropagation();
 						callback.call (self);
 					});
 				}
