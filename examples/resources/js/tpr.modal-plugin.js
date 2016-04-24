@@ -68,36 +68,37 @@
 			this.$modal  = {
 				//
 				//
-				$modalbox        : $('<div></div>'),
+				$modalbox        : this._createElement ('div'),
 
 
 				//
 				//
-				$modalbackground : $('<div class="tpr-modal-background"></div>'),
+				$modalbackground : this._createElement ('div', 'tpr-modal-background'),
 
 				//
 				//
-				$modaltopbar     : $('<div class="tpr-modal-topbar"></div>'),
+				$modaltopbar     : this._createElement ('div', 'tpr-modal-topbar'),
 
 				//
 				//
-				$modalcontent    : $('<div class="tpr-modal-content"></div>'),
+				$modalcontent    : this._createElement ('div', 'tpr-modal-content'),
 
 				//
 				//
-				$modalbotbar     : $('<div class="tpr-modal-botbar"></div>'),
+				$modalbotbar     : this._createElement ('div', 'tpr-modal-botbar'),
 
 				//
 				//
-				$modalmorebox    : $('<div class="tpr-modal-morebox"></div>'),
-				$modalmorelbtn   : $('<a href="#" class="tpr-modal-morebutton"></a>'),
+				$modalmorebox    : this._createElement ('div', 'tpr-modal-morebox'),
+				$modalmorelbtn   : this._createElement ('a', 'tpr-modal-morebutton'),
 
 
-				$closebutton     : $('<a href="#" class="tpr-modal-close" ></a>'),
+				$closebutton     : this._createElement ('a', 'tpr-modal-close'),
 
 
-				$modaltitle      : $('<p></p>'),
-				$modalmessage    : $('<p></p>')
+				$modaltitle      : this._createElement ('p'),
+				$modalmessage    : this._createElement ('p'),
+				$modalmoremsg    : this._createElement ('p')
 			};
 
 			this.options = {};
@@ -117,20 +118,50 @@
 
 		TPRMODAL.prototype = {
 
+			_empty         : function (element) {
+				var self = this;
+				while (element.firstChild) {
+				    element.removeChild(element.firstChild);
+				}
+			},
+			_setStyle      : function (element, styles) {
+				var self = this;
+				for (style in styles) {
+					element.style [style] = styles [style];
+				}
+			},
+
+			_setClass      : function (element, eClass) {
+				var self = this;
+				element.setAttribute ('class', eClass);
+			},
+
+			_createElement : function (element, eClass) {
+				var self 	= this;
+				var element	= document.createElement (element);
+
+				if (eClass) {
+					self._setClass (element, eClass);
+				}
+				return element;
+			},
+
+
 			_buildButtons : function () {
 				var self = this;
-				self.$modal.$modalbotbar.empty ();
+				self._empty (self.$modal.$modalbotbar);
 
 				//
 				// Configure botbar
 				$.each (self.options.buttons, function (index, element) {
 					if (element.state === true) {
-						var $button = $('<a href="#" class="tpr-modal-button ' + element.class + '">' + element.text + '</a>');
+						var $button 	 = self._createElement ('a', 'tpr-modal-button ' + element.class);
+							$button.text = element.text;
 							self._attachEvent ($button, 'click', function () {
 								element.click.call (self);
 							});
 
-						self.$modal.$modalbotbar.append ($button);
+						self.$modal.$modalbotbar.appendChild ($button);
 					}
 				});
 			},
@@ -141,29 +172,29 @@
 				//
 				// Set parent class that determine
 				// style of the entire modal
-				self.$modal.$modalbox
-					.addClass (self.options.styleclass);
-
+				self._setClass (self.$modal.$modalbox, self.options.styleclass);
+				
 
 				//
 				// Configure topbar
-				self.$modal.$modaltopbar
-					.append (self.$modal.$modaltitle.text (self.title))
-					.append (self.$modal.$closebutton);
+				self.$modal.$modaltitle.text = self.title
+				self.$modal.$modaltopbar.appendChild (self.$modal.$modaltitle);
+				self.$modal.$modaltopbar.appendChild (self.$modal.$closebutton);
 		
 
 				//
 				// Configure content
-				self.$modal.$modalcontent
-					.append (self.$modal.$modalmessage.text (self.message));
+				self.$modal.$modalmessage.text = self.message
+				self.$modal.$modalcontent.appendChild (self.$modal.$modalmessage);
 
 				//
 				// Has more info box?
-				self.$modal.$modalmorelbtn.text (self.options.moreinfo.buttontext);
-				self.$modal.$modalmorebox.append (self.options.moreinfo.message);
+				self.$modal.$modalmorelbtn.text = self.options.moreinfo.buttontext;
+				self.$modal.$modalmoremsg.text  = self.options.moreinfo.message;
+				self.$modal.$modalmorebox.appendChild (self.$modal.$modalmoremsg);
 
-				self.$modal.$modalcontent.append (self.$modal.$modalmorelbtn);
-				self.$modal.$modalcontent.append (self.$modal.$modalmorebox);
+				self.$modal.$modalcontent.appendChild (self.$modal.$modalmorelbtn);
+				self.$modal.$modalcontent.appendChild (self.$modal.$modalmorebox);
 
 				if (self.options.moreinfo.state === true) {
 					self.$modal.$modalmorelbtn.css({"display" : "inline-block"});
@@ -173,16 +204,17 @@
 				}
 
 
-				self.$modal.$modalbox.append (self.$modal.$modaltopbar);
-				self.$modal.$modalbox.append (self.$modal.$modalcontent);
-				self.$modal.$modalbox.append (self.$modal.$modalbotbar);
+				self.$modal.$modalbox.appendChild (self.$modal.$modaltopbar);
+				self.$modal.$modalbox.appendChild (self.$modal.$modalcontent);
+				self.$modal.$modalbox.appendChild (self.$modal.$modalbotbar);
 
 
 				// Has background?
 				if (self.options.backlayer) {
-					self.$modal.$modalbackground.appendTo ($('body'));
-					self.$modal.$modalbox.appendTo (self.$modal.$modalbackground);
-
+					self.$modal.$modalbox.style.display = 'inline-block';
+					self.$modal.$modalbackground.appendChild (self.$modal.$modalbox);
+					document.getElementsByTagName ('body')[0].appendChild (self.$modal.$modalbackground);
+				
 					//
 					// When click on background close?
 					if (self.options.closeoutclick) {
@@ -200,20 +232,20 @@
 					self.setClosable (false);
 				}
 
-
 				//
 				// CENTER MODAL
 				var windowWidth  = window.innerWidth; 
 				var windowHeight = window.innerHeight;
-				var modalWidth   = Math.floor ((self.$modal.$modalbox.innerWidth() / 100) * windowWidth);
-				var modalHeight  = Math.floor ((self.$modal.$modalbox.innerHeight() / 100) * windowHeight) + 400;
+				var modalWidth   = Math.floor ((self.$modal.$modalbox.offsetWidth / 100) * windowWidth);
+				var modalHeight  = Math.floor ((self.$modal.$modalbox.offsetHeight / 100) * windowHeight) + 400;
 				
 				var xPosition    = (windowWidth / 2) - (modalWidth / 2);
 				var yPosition    = (windowHeight / 2) - (modalHeight / 2);
 
+				console.log (self.$modal.$modalbox.offsetWidth);
 				//
 				// SET x, y POSITIONS
-				self.$modal.$modalbox.css ({
+				self._setStyle (self.$modal.$modalbox, {
 					"left" : xPosition + 'px',
 					"top"  : yPosition + 'px'
 				});
@@ -223,14 +255,13 @@
 				self._attachEvent (self.$modal.$modalbox, 'click', function () {
 					return false;
 				});
-
 			},
 
 			_attachEvent : function (element, event, callback) {
 				var self = this;
 				if (element && event && callback) {
-					element.off (event);
-					element.on (event, function (event) {
+					element.removeEventListener (event, callback, false);
+					element.addEventListener (event, function (event) {
 						event.stopPropagation();
 						callback.call (self);
 					});
@@ -241,15 +272,15 @@
 			// Configure modal text
 			setTitle   		  : function (title) {
 				var self = this;
-				self.$modal.$modaltitle.text (title);
+				self.$modal.$modaltitle.text = title;
 			},
 			setMessage 		  : function (message) {
 				var self = this;
-				self.$modal.$modalmessage.text (message);
+				self.$modal.$modalmessage.text = message;
 			},
 			setMessageExplain : function (msg) {
 				var self = this;
-				self.$modal.$modalmorebox.text (msg);
+				self.$modal.$modalmorebox.text = msg;
 			},
 			setMoreinfoState  : function (state) {
 				var self = this;
@@ -267,7 +298,7 @@
 			setMoreinfoButtonText : function (text) {
 				var self = this;
 				if (text) {
-					self.$modal.$modalmorelbtn.text (text);
+					self.$modal.$modalmorelbtn.text = text;
 				}
 			},
 			setStyle          : function (styleClass) {
@@ -295,13 +326,12 @@
 			// Visibility control
 			show : function () {
 				var self = this;
-				self.$modal.$modalbackground.show ();
-
+				self.$modal.$modalbackground.style.display = 'inline-block';
 			},
 			hide : function () {
 				var self = this;
-				self.$modal.$modalbackground.hide ();
-				self.$modal.$modalmorebox.hide ();
+				self.$modal.$modalbackground.style.display  = 'none';
+				self.$modal.$modalmorebox.style.display 	= 'none';
 			},
 
 			setButtons : function (buttons) {

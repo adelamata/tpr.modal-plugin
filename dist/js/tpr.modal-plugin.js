@@ -68,7 +68,7 @@
 			this.$modal  = {
 				//
 				//
-				$modalbox        : $('<div></div>'),
+				$modalbox        : this._createElement ('div'),
 
 
 				//
@@ -116,6 +116,16 @@
 		};
 
 		TPRMODAL.prototype = {
+
+			_createElement : function (element, eClass) {
+				var self 	= this;
+				var element	= document.createElement (element);
+
+				if (eClass) {
+					element.setAttribute ('class', eClass);
+				}
+				return element;
+			},
 
 			_buildButtons : function () {
 				var self = this;
