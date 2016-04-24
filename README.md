@@ -1,4 +1,5 @@
-# tpr.modal-plugin
+# UNDER DEVELOP
+# tpr.modal-plugin without jQuery
 	A modal plugin for your web @ Antonio de la Mata López @ 2016
 
 # Description
