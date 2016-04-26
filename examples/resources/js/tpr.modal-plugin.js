@@ -291,6 +291,13 @@
 				}
 			},
 
+			setDefaultButtonsHide : function () {
+				var self = this;
+				$.each (self.options.buttons, function (index, element) {
+					element.state = false;
+				});
+			},
+
 			//
 			// Visibility control
 			show : function () {
