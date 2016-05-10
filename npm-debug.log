@@ -1,0 +1,22 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@2.15.0
+3 info using node@v4.4.2
+4 verbose config Skipping project config: C:\Users\adelamata/.npmrc. (matches userconfig)
+5 verbose stack Error: ENOENT: no such file or directory, open 'C:\Users\adelamata\package.json'
+5 verbose stack     at Error (native)
+6 verbose cwd C:\Users\adelamata\Documents\projs\tpr.modal\tpr.modal-plugin
+7 error Windows_NT 6.1.7601
+8 error argv "C:\\Program Files (x86)\\nodejs\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+9 error node v4.4.2
+10 error npm  v2.15.0
+11 error path C:\Users\adelamata\package.json
+12 error code ENOENT
+13 error errno -4058
+14 error syscall open
+15 error enoent ENOENT: no such file or directory, open 'C:\Users\adelamata\package.json'
+15 error enoent This is most likely not a problem with npm itself
+15 error enoent and is related to npm not being able to find a file.
+16 verbose exit [ -4058, true ]
