@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example02 - Changing title and message on instanciation</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/tpr.modal-plugin.min.css">
+
+</head>
+<body>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="resources/js/tpr.modal-plugin.min.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+
+		/**
+		* Author: Antonio de la Mata López
+		* Example: 02
+		* Description: Change text and default message on instanciation
+		* When the modal is istantiated, this can accept an object with configuration properties. 
+		* For change title and message in *construction you can use "title" and "message" pair/value properties.
+		* Setting object {"title" : "My new title", "message" : "My loooooooooooooooooooooooooong message."}
+		**/
+		var modal = new TPRMODAL({title : "My new title", message : "My loooooooooooooooooooooooooong message."});
+			modal.show();
+
+	</script>
+</body>
+</html>

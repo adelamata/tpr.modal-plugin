@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example12 - Create custom button without configure default buttons</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/tpr.modal-plugin.min.css">
+	<style type="text/css">
+
+	/* Custon modal style (red)*/
+	.tpr-modalbox-red {border: 1px solid #CF3329; background: white}
+	.tpr-modalbox-red .tpr-modal-topbar {background: #CF3329; color: #FFA7A2;}
+	</style>
+</head>
+<body>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="resources/js/tpr.modal-plugin.min.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+
+		/**
+		* Author: Antonio de la Mata López
+		* Example: 12
+		* Description: Example12- Create a custom button that not is accept, cancel or close in addition
+		* use setDefaultButtonsHide() method that hide all default buttons
+		**/
+		var modal = new TPRMODAL();
+			modal.setDefaultButtonsHide ();
+			modal.setButtons({
+				gonext : {
+					state : true,
+					text  : 'Go next page',
+					class : 'default',
+					click : function () {
+						alert ('Go to next page');
+					}
+				}
+			});
+			modal.show ();
+
+	</script>
+</body>
+</html>
