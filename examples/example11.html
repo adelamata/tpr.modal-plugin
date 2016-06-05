@@ -32,13 +32,15 @@
 				gonext : {
 					state : true,
 					text  : 'Go next page',
-					class : 'default',
-					click : function () {
-						alert ('Go to next page');
-					}
+					class : 'default'
 				}
 			});
 			modal.show ();
+
+			modal.on ('gonext', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
 
 	</script>
 </body>

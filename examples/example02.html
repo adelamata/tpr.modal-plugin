@@ -25,6 +25,21 @@
 		var modal = new TPRMODAL({title : "My new title", message : "My loooooooooooooooooooooooooong message."});
 			modal.show();
 
+			modal.on ('accept', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
+			modal.on ('close', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
+			modal.on ('cancel', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
 	</script>
 </body>
 </html>

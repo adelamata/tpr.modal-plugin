@@ -26,14 +26,26 @@
 				accept : {
 						state   : true,         // Attach to DOM
 						text    : 'Aceptar',     // Text: in spanish 'Aceptar', english, any language
-						class   : 'default',    // CSS class aplied, default: .default      
-						click   : function () { // Button behaviour
-							alert ("Accept button clicked");
-						}
+						class   : 'default'    // CSS class aplied, default: .default      
 					}
 			
 		});
 			modal.show ();
+
+			modal.on ('accept', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
+			modal.on ('close', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
+			modal.on ('cancel', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
 
 	</script>
 </body>

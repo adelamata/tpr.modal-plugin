@@ -40,6 +40,11 @@
 		});
 			modal.show ();
 
+			modal.on ('accept', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
 	</script>
 </body>
 </html>

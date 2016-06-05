@@ -41,26 +41,17 @@
 					accept : {
 						state   : true,
 						text    : 'Accept',
-						class   : 'default',
-						click   : function () {
-							console.log ("accept");
-						}
+						class   : 'default'
 					},
 					cancel : {
 						state   : true,
 						text    : 'Cancel',
-						class   : 'default',
-						click  : function () {
-							console.log ("cancel");
-						}
+						class   : 'default'
 					},
 					close  : {
 						state   : true,
 						text    : 'Close',
-						class   : 'default-close',
-						click   : function () {
-							this.$modal.$modalbackground.hide ();
-						}
+						class   : 'default-close'
 					}
 				}
 			};
@@ -103,6 +94,8 @@
 			this.options = {};
 			$.extend(true, this.options ,this.defaults, opts);
 
+			this.$el     = this.$modal.$modalbox;
+
 			//
 			// Modal texts
 			this.title   		= (opts && opts.title)  		|| "Default title";
@@ -125,14 +118,38 @@
 				// Configure botbar
 				$.each (self.options.buttons, function (index, element) {
 					if (element.state === true) {
-						var $button = $('<a href="#" class="tpr-modal-button ' + element.class + '">' + element.text + '</a>');
-							self._attachEvent ($button, 'click', function () {
-								element.click.call (self);
-							});
 
+						var $button = $('<a href="#" class="tpr-modal-button ' + element.class + '">' + element.text + '</a>');
+						
 						self.$modal.$modalbotbar.append ($button);
+						self._attachEvent ($button, 'click', index);
+
 					}
 				});
+			},
+
+			_attachEvent : function (element, event, executor) {
+				var self = this;
+				if (element && event && executor) {
+					if (!$.isFunction (executor)) {
+						element.off (event);
+						element.on (event, function (event) {
+							event.stopPropagation();
+							event.preventDefault();
+
+							self.$modal.$modalbox.trigger (executor, [self, element]);
+						});
+					}else {
+						element.off (event);
+						element.on (event, function (event) {
+							event.stopPropagation();
+							event.preventDefault();
+
+							executor();
+						});
+					}
+					
+				}
 			},
 
 			_buildModal   : function () {
@@ -224,18 +241,14 @@
 					return false;
 				});
 
-			},
+				self.$el = self.$modal.$modalmorebox;
 
-			_attachEvent : function (element, event, callback) {
-				var self = this;
-				if (element && event && callback) {
-					element.off (event);
-					element.on (event, function (event) {
-						event.stopPropagation();
-						callback.call (self);
-					});
-				}
 			},
+			on : function (event, callback) {
+				var self = this;
+				self.$modal.$modalbox.off (event);
+				self.$modal.$modalbox.on (event, callback);
+			},			
 
 			//
 			// Configure modal text

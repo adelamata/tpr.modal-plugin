@@ -11,7 +11,7 @@
 
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js" charset="UTF-8"></script>
 	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" charset="UTF-8"></script>
-	<script type="text/javascript" src="resources/js/tpr.modal-plugin.min.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="resources/js/tpr.modal-plugin.js" charset="UTF-8"></script>
 	<script type="text/javascript">
 
 		/**
@@ -22,6 +22,21 @@
 		**/
 		var modal = new TPRMODAL();
 			modal.show();
+
+			modal.on ('accept', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
+			modal.on ('close', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
+			modal.on ('cancel', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
 
 	</script>
 </body>

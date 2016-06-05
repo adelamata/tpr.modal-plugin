@@ -26,10 +26,8 @@
 				accept : {
 						state   : true,         // Attach to DOM
 						text    : 'Aceptar',    // Text: in spanish 'Aceptar', english, any language
-						class   : 'default',    // CSS class aplied, default: .default      
-						click   : function () { // Button behaviour
-							this.hide (); 		// Hide modal
-						}
+						class   : 'default'   // CSS class aplied, default: .default      
+						
 					},
 				"cancel" : {state : false},
 				"close"  : {state : false}
@@ -38,6 +36,21 @@
 		
 			modal.setClosable (false);
 			modal.show ();
+
+			modal.on ('accept', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
+			modal.on ('close', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
+
+			modal.on ('cancel', function (event, modal, button) {
+				console.log (modal);
+				console.log (button);
+			});
 
 	</script>
 </body>
