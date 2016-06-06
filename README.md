@@ -109,17 +109,14 @@
 			# state
 			# text
 			# class
-			# click
 		# cancel
 			# state
 			# text
 			# class
-			# click
 		# close
 			# state
 			# text
 			# class
-			# click
 	# title
 	# message
 	# messageExplain
