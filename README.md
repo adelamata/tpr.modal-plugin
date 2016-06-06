@@ -153,3 +153,27 @@
 
 	# setButtons(buttons)
 	Set buttons
+
+
+# UPDATES
+	# Events oriented
+	The plugin now works with events instead of callbacks. That is, for each button that appears 
+	on the modal you can add a listener for an event with the same name of the button
+
+	Example:
+	buttons {
+		accept : {
+			....
+		},
+		otherbutton : {
+			....
+		}
+	}
+
+	Then
+
+	modal.on ('accept', function () {
+	});
+	modal.on ('otherbutton', function () {
+	});
+
