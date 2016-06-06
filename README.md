@@ -96,6 +96,8 @@
 
 # Properties (in construction)
 	# closable
+	This property indicate whether the modal can be closed with the upper-righ cross.
+
 	# styleclass
 	# backlayer
 		# state
