@@ -96,32 +96,77 @@
 
 # Properties (in construction)
 	# closable
-	This property indicate whether the modal can be closed with the upper-righ cross.
+		Type Boolean
+		Description This property indicate whether the modal can be closed with the upper-righ cross.
 
 	# styleclass
-	# backlayer
-		# state
-	# closeoutclick
+		Type String
+		Description This property indicate which is the class of our css that will be applied.
+		This is the class that the modal will use to apply cascading styles. If you look at 
+		the file tpr.modal-plugin.css in the css folder, you will notice that the fundamental 
+		styles are applied on css root selectors "tpr-modalbox-", 
+		which we call structural styles, since they are styles that only modify the position,
+		Margins, etc. If we continue below, we can see that there is a class called "tpr-modalbox-gray",
+		it is this class that provides the visual styles: colors, fonts,
+		etc. There may be as many "tpr-modalbox-anything" as you would like to modify the
+		visual styles. For example, we might have a "tpr-modalbox-network" to create error manners or
+		incorrect data. For this we would have to create in our styles the class previously exposed
+		and then begin to modify the styles of the inheritance. For example: .tpr-modalbox-red.tpr-modal-topbar {background: red: color: white;} would paint the top bar of the modal red and white text.
+
+	# backlayer 
+		Type Boolean
+		Description Determine whether the modal has a div behind or is being inserted directly in the body element.
+		
+	# closeoutclick 
+		Type Boolean
+		Description Determines whether the modal closes when a click is detected outside of it.
 	# moreinfo
-		# state
-		# message
-		# buttontext
+		When we want or need show more info but we dont want that the modal grow excessively is a good idea insert 
+		all text inside of More info box. This box is hidden by default but the user can see a button whit the text
+		"More info" (by default, is editable) and when the user click on it then the box state pass to show and the 
+		user can see all text now.
+		# state 
+			Type Boolean
+			Description 
+		# message 
+			Type String
+			Description Hidden text
+		# buttontext 
+			Type String
+			Description More info button text
+			Default More info
 	# buttons
+	Determines buttons inside of modal. You can add custom buttons.
 		# accept
-			# state
+			Type Object|false
+			Description Default accept button
+			Default Object
 			# text
 			# class
 		# cancel
-			# state
+			Type Object|false
+			Description Default cancel button
+			Default Object
 			# text
 			# class
 		# close
-			# state
+			Type Object|false
+			Description Default close button
+			Default Object
 			# text
 			# class
 	# title
+		Type String
+		Description The top title of the modal
+		Default Default title
 	# message
+		Type String
+		Description The message shown on the modal
+		Default Default message
 	# messageExplain
+		Type String
+		Description The More info box text
+		Default  Default message
 
 
 # API
@@ -178,4 +223,13 @@
 	});
 	modal.on ('otherbutton', function () {
 	});
+
+
+
+	# Create method _insertChilds
+	Before _insertChild existed to add a child element on another parent element, 
+	the modal used the appen method of jquery. This call to that method has been 
+	simplified by crushing the _insertChilds method which does the same but removing 
+	the ugly append. This method receives two parameters, the parent and either a 
+	child element, or an array of child elements.
 

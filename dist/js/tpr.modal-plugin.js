@@ -20,7 +20,7 @@
 * DEALINGS IN THE SOFTWARE.
 *
 **/
-	(function (window, $, undefined) {
+	(function (window, jQuery, undefined) {
 
 		
 		TPRMODAL = function (opts) {
@@ -57,50 +57,28 @@
 			};
 
 			this.$modal  = {
-				//
-				//
-				$modalbox        : $('<div></div>'),
-
-
-				//
-				//
-				$modalbackground : $('<div class="tpr-modal-background"></div>'),
-
-				//
-				//
-				$modaltopbar     : $('<div class="tpr-modal-topbar"></div>'),
-
-				//
-				//
-				$modalcontent    : $('<div class="tpr-modal-content"></div>'),
-
-				//
-				//
-				$modalbotbar     : $('<div class="tpr-modal-botbar"></div>'),
-
-				//
-				//
-				$modalmorebox    : $('<div class="tpr-modal-morebox"></div>'),
-				$modalmorelbtn   : $('<a href="#" class="tpr-modal-morebutton"></a>'),
-
-
-				$closebutton     : $('<a href="#" class="tpr-modal-close" ></a>'),
-
-
-				$modaltitle      : $('<p></p>'),
-				$modalmessage    : $('<p></p>')
+				$modalbox        : this._createElement('<div></div>'),
+				$modalbackground : this._createElement('<div class="tpr-modal-background"></div>'),
+				$modaltopbar     : this._createElement('<div class="tpr-modal-topbar"></div>'),
+				$modalcontent    : this._createElement('<div class="tpr-modal-content"></div>'),
+				$modalbotbar     : this._createElement('<div class="tpr-modal-botbar"></div>'),
+				$modalmorebox    : this._createElement('<div class="tpr-modal-morebox"></div>'),
+				$modalmorelbtn   : this._createElement('<a href="#" class="tpr-modal-morebutton"></a>'),
+				$modaltitle      : this._createElement('<p></p>'),
+				$modalmessage    : this._createElement('<p></p>')
 			};
 
 			this.options = {};
 			$.extend(true, this.options ,this.defaults, opts);
 
 			this.$el     = this.$modal.$modalbox;
+			this.$body   = jQuery('body');
 
 			//
 			// Modal texts
-			this.title   		= (opts && opts.title)  		|| "Default title";
-			this.message 		= (opts && opts.message) 		|| "Default message";
-			this.messageExplain = (opts && opts.messageExplain) || "Default message explain";
+			this.title   		= (opts && opts.title)  		|| 'Default title';
+			this.message 		= (opts && opts.message) 		|| 'Default message';
+			this.messageExplain = (opts && opts.messageExplain) || 'Default message explain';
 
 			//
 			// Modal construction
@@ -109,7 +87,12 @@
 		};
 
 		TPRMODAL.prototype = {
-
+			_createElement : function (element) {
+				var self = this;
+				if (element) {
+					return jQuery(element);
+				}
+			},
 			_buildButtons : function () {
 				var self = this;
 				self.$modal.$modalbotbar.empty ();
@@ -119,7 +102,7 @@
 				$.each (self.options.buttons, function (index, element) {
 					if (element.state === true) {
 
-						var $button = $('<a href="#" class="tpr-modal-button ' + element.class + '">' + element.text + '</a>');
+						var $button = self._createElement('<a href="#" class="tpr-modal-button ' + element.class + '">' + element.text + '</a>');
 						
 						self.$modal.$modalbotbar.append ($button);
 						self._attachEvent ($button, 'click', index);
@@ -197,7 +180,7 @@
 
 				// Has background?
 				if (self.options.backlayer) {
-					self.$modal.$modalbackground.appendTo ($('body'));
+					self.$modal.$modalbackground.appendTo (self.$body);
 					self.$modal.$modalbox.appendTo (self.$modal.$modalbackground);
 
 					//
@@ -208,7 +191,7 @@
 						});
 					}
 				} else {
-					self.$modal.$modalbox.appendTo ($('body'));
+					self.$modal.$modalbox.appendTo (self.$body);
 				}
 
 				//
@@ -343,4 +326,4 @@
 		};
 
 
-	})(window, jQuery);
+	})(window, $);
