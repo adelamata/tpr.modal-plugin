@@ -1,38 +1,45 @@
-var gulp = require('gulp'),
-    gulpUglify = require('gulp-uglify')
-gulpNotify = require('gulp-notify'),
-    gulpRename = require('gulp-rename'),
-    gulpCSS = require('gulp-cssnano');
+const { src, dest, watch, series, parallel } = require("gulp");
+const uglify = require("gulp-uglify");
+const notify = require("gulp-notify");
+const rename = require("gulp-rename");
+const cssnano = require("gulp-cssnano");
 
-gulp.task('JSMinToProduction', function () {
-    return gulp.src('src/js/*.js')
-        .pipe(gulpUglify())
-        .pipe(gulpRename({ suffix: '.min' }))
-        .pipe(gulp.dest('dist/js'))
-        .pipe(gulpNotify({ message: 'JSMinToProduction success!' }));
-});
+function jsMinToProduction() {
+  return src("src/js/*.js")
+    .pipe(uglify())
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(dest("dist/js"))
+    .pipe(notify({ message: "JSMinToProduction success!" }));
+}
 
-gulp.task('CSSMinToProduction', function () {
-    return gulp.src('src/css/*.css')
-        .pipe(gulpCSS())
-        .pipe(gulpRename({ suffix: '.min' }))
-        .pipe(gulp.dest('dist/css'))
-        .pipe(gulpNotify({ message: 'CSSMinToProduction success!' }))
+function cssMinToProduction() {
+  return src("src/css/*.css")
+    .pipe(cssnano())
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(dest("dist/css"))
+    .pipe(notify({ message: "CSSMinToProduction success!" }));
+}
 
-});
+function jsAndCssForExamples() {
+  return (
+    src("src/js/*.js").pipe(dest("examples/resources/js")),
+    src("src/css/*.css")
+      .pipe(dest("examples/resources/css"))
+      .pipe(
+        notify({
+          message: "JS and CSS Files have been moved to examples/resources",
+        })
+      )
+  );
+}
 
+function watchFiles() {
+  watch("src/js/*.js", jsAndCssForExamples);
+  watch("src/css/*.css", jsAndCssForExamples);
+}
 
-gulp.task('JSAndCSSForExamples', function () {
-    gulp.src('src/js/*.js')
-        .pipe(gulp.dest('examples/resources/js'))
-
-    gulp.src('src/css/*.css')
-        .pipe(gulp.dest('examples/resources/css'))
-        .pipe(gulpNotify({ message: 'JS and CSS Files has been moved to examples/resources' }));
-});
-
-
-gulp.task('watch', function () {
-    gulp.watch('src/js/*.js', ['JSAndCSSForExamples']);
-    gulp.watch('src/css/*.css', ['JSAndCSSForExamples']);
-});
+exports.jsMinToProduction = jsMinToProduction;
+exports.cssMinToProduction = cssMinToProduction;
+exports.jsAndCssForExamples = jsAndCssForExamples;
+exports.watch = watchFiles;
+exports.default = parallel(jsMinToProduction, cssMinToProduction);
